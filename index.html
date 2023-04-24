@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tailwind.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgBody: '#414141',
+                        bgLight: '#292929',
+                        bgDark: '#212121',
+
+                        borderColor: '#B0FD33',
+
+                        textGreen: '#9DFE00',
+                        textGray: '#B1B1B1',
+                        textRed: '#FF3333',
+                        textBrown: '#784407'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* Стилизация тегов */
+            html {
+                @apply font-[PerfectDosvga]
+            }
+            body {
+                @apply bg-bgBody;
+            }
+            .container {
+                @apply w-9/12 mx-auto;
+            }
+            p {
+                @apply text-white text-base;
+            }
+            h1~p, h2~p, h3~p{
+                @apply text-3xl;
+            }
+            h1 { @apply text-6xl}
+            h2 { @apply text-5xl}
+            h3 { @apply text-4xl}
+            h4 { @apply text-3xl}
+            h5 { @apply text-2xl}
+            h6 { @apply text-xl }
+            /* ---------------- */
+
+            /* Шаблоны */
+            .borderGreen {
+                @apply border-2 border-borderColor
+            }
+            /* ---------------- */
+
+            /* header */
+            header {
+                @apply borderGreen border-t-0 p-5 mb-10 bg-bgLight space-y-8;
+            }
+            /* ---------------- */
+
+            /*  УНИКАЛЬНАЯ ЧАСТЬ СТРАНИЦЫ */
+
+            /* Данные за неделю */
+            .statisticsWeek {
+                @apply flex flex-row space-x-7;
+            }
+            .statisticsWeek > div {
+                @apply flex flex-col justify-center;
+            }
+            .statisticsWeek > div > p:first-child {
+                @apply text-textGray text-xs;
+            }
+            .statisticsWeek > div:first-child > p {
+                @apply text-base text-white;
+            }
+            /* ---------------- */
+
+            /* Задачи */
+
+             /* ---------------- */
+
+             /* Участники */
+        }
+    </style>
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <!-- 1-ая строчка -->
+            <div>
+                <p>
+                    <span class="text-textGreen">StrartUp Club</span><br>Statistics
+                </p>
+            </div>
+
+            <!-- 2-ая строка -->
+            <div class="flex justify-between">
+                <div class="statisticsWeek">
+                    <div>
+                        <p>1 неделя</p>
+                    </div>
+
+                    <div>
+                        <p>начало</p>
+                        <p>24.04.2023</p>
+                    </div>
+
+                    <div>
+                        <p>конец</p>
+                        <p>31.04.2023</p>
+                    </div>
+
+                    <div>
+                        <p>выполнено</p>
+                        <p class="text-textGreen">5 задач</p>
+                    </div>
+
+                    <div>
+                        <p>осталось</p>
+                        <p>10 задач</p>
+                    </div>
+                </div>
+                <div>
+                    <p>Вы участник</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Задачи -->
+            <section>
+
+            </section>
+
+            <!-- участники -->
+            <section>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
