@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="tailwind.js"></script>
+    <script src="tailWindCSS.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <script>
         tailwind.config = {
@@ -22,6 +22,9 @@
                         textGray: '#B1B1B1',
                         textRed: '#FF3333',
                         textBrown: '#784407'
+                    },
+                    fontSize: {
+
                     }
                 }
             }
@@ -40,11 +43,12 @@
                 @apply w-9/12 mx-auto;
             }
             p {
-                @apply text-white text-base;
+                @apply text-base;
             }
             h1~p, h2~p, h3~p{
                 @apply text-3xl;
             }
+            p, h1, h2, h3, h4, h5, h6 { @apply text-white }
             h1 { @apply text-6xl}
             h2 { @apply text-5xl}
             h3 { @apply text-4xl}
@@ -55,13 +59,57 @@
 
             /* Шаблоны */
             .borderGreen {
-                @apply border-2 border-borderColor
+                @apply border-borderColor
             }
+            .borderGreenB {
+                @apply border-borderColor border-b-2;
+            }
+
+                /* Иконки профессии */
+            .profession {
+                @apply rounded-md h-max w-max px-1.5 text-xs;
+            }
+            .frontend-dev {
+                @apply profession bg-[#FFBA68] after:content-['frontend-dev'] after:text-[#784407] ;
+            }
+            .web-design {
+                @apply profession bg-[#64E096] after:content-['web-design'] after:text-[#004A1E] ;
+            }
+
+                /* Кнопки состояния */
+            .status {
+                @apply h-max w-max px-5;
+            }
+            .complete {
+                @apply before:mr-2 before:status before:py-1 before:bg-[#B0FD33] before:h-max 
+                before:w-max before:content-['Сделанно'] after:content-['+3_балла'] after:text-textGreen;
+            }
+            .inProgress {
+                @apply status bg-[#97C7FF] after:content-['Выполняется'];
+            }
+            .take {
+                @apply status bg-[#E7FFBF] after:content-['Взять'];
+            }
+
+                /* Подпись исполнителя */
+            .executor{
+                @apply after:content-[attr(data-executor)];
+            }
+            
             /* ---------------- */
 
             /* header */
             header {
-                @apply borderGreen border-t-0 p-5 mb-10 bg-bgLight space-y-8;
+                @apply borderGreen border-x-2 border-b-2 p-5 mb-10 bg-bgLight space-y-8;
+            }
+            /* ---------------- */
+
+            /* input */
+            input {
+                @apply bg-inherit outline-none text-white placeholder:text-textGray h-full w-full;
+            }
+            label {
+                @apply text-white;
             }
             /* ---------------- */
 
@@ -83,6 +131,15 @@
             /* ---------------- */
 
             /* Задачи */
+            .tasks {
+                @apply flex flex-col  justify-between bg-bgDark p-4 space-y-14 min-h-[132px];
+            }
+            .tasks > div:first-child p {
+                @apply text-xs text-textGray;
+            }
+            .tasks > div:first-child h6 {
+                @apply text-base;
+            }
 
              /* ---------------- */
 
@@ -137,8 +194,87 @@
 
         <main>
             <!-- Задачи -->
-            <section>
+            <section class="flex flex-row space-x-7">
+                <!-- Список задач и их добавление -->
+                <div class="w-7/12">
+                    <!-- Создать новую задачу -->
+                    <form class="flex borderGreenB bg-bgLight h-[56px] mb-7 p-5 items-center">
+                        <label for="newTask">//:</label>
+                        <input type="text" name="newTask" placeholder="  Введите новую задачу...">
+                        <img class="h-full cursor-pointer" src="media/svg/ArrowRight.svg" alt="">
+                    </form>
 
+                    <!-- Список задач -->
+                    <div class="flex flex-col space-y-5">
+                        <article class="tasks">
+                            <!-- 1 -->
+                            <div class="flex flex-row justify-between">
+                                <div>
+                                    <p>04.24.2023</p>
+                                    <h6>Написать базовую логику авторизации</h6>
+                                </div>
+
+                                <!-- Пометка професии исполнителя -->
+                                <p class="frontend-dev"></p>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="flex justify-between">
+                                <!-- Состояние -->
+                                <div class="complete"></div>
+
+                                <p class="executor" data-executor="Алиса Макова">Исполнитель:// </p>
+                            </div>
+                        </article>
+
+                        <article class="tasks">
+                            <!-- 1 -->
+                            <div class="flex flex-row justify-between">
+                                <div>
+                                    <p>04.24.2023</p>
+                                    <h6>Изучить основы HTML</h6>
+                                </div>
+
+                                <!-- Пометка професии исполнителя -->
+                                <p class="frontend-dev"></p>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="flex justify-between">
+                                <!-- Состояние -->
+                                <div class="inProgress"></div>
+
+                                <p class="executor" data-executor="Иванов Иван">Исполнитель:// </p>
+                            </div>
+                        </article>
+
+                        <article class="tasks">
+                            <!-- 1 -->
+                            <div class="flex flex-row justify-between">
+                                <div>
+                                    <p>04.24.2023</p>
+                                    <h6>Решить задачи на LeetCode (4 б)</h6>
+                                </div>
+
+                                <!-- Пометка професии исполнителя -->
+                                <p class=""></p>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="flex justify-between">
+                                <!-- Состояние -->
+                                <div class="take"></div>
+
+                                <p class="executor" data-executor="NaN">Исполнитель:// </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Участники -->
+                <div class="w-5/12 bg-bgDark">
+
+                </div>
             </section>
 
             <!-- участники -->
