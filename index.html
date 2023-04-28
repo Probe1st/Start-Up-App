@@ -13,8 +13,9 @@
                 extend: {
                     colors: {
                         bgBody: '#414141',
-                        bgLight: '#292929',
+                        bgNeutral: '#292929',
                         bgDark: '#212121',
+                        bgLight: '#3F3F3F',
 
                         borderColor: '#B0FD33',
 
@@ -38,6 +39,9 @@
             }
             body {
                 @apply bg-bgBody;
+            }
+            main {
+                @apply flex space-x-7;
             }
             .container {
                 @apply w-9/12 mx-auto;
@@ -93,14 +97,25 @@
 
                 /* Подпись исполнителя */
             .executor{
-                @apply after:content-[attr(data-executor)];
+                @apply before:content-["Исполнитель://_"];
             }
             
+                /* Карточки участников */
+            .partner {
+                @apply bg-bgLight rounded-lg p-2.5 justify-between space-y-8;
+            }
+            .partner-onclick {
+                @apply bg-[#E7FFBF] rounded-lg p-2.5 justify-between space-y-8
+                text-black;
+            }
+            .partner-onclick > div > p:first-child {
+                @apply text-black;
+            }
             /* ---------------- */
 
             /* header */
             header {
-                @apply borderGreen border-x-2 border-b-2 p-5 mb-10 bg-bgLight space-y-8;
+                @apply borderGreen border-x-2 border-b-2 p-5 mb-10 bg-bgNeutral space-y-8;
             }
             /* ---------------- */
 
@@ -143,7 +158,6 @@
 
              /* ---------------- */
 
-             /* Участники */
         }
     </style>
     <title>Home</title>
@@ -194,95 +208,149 @@
 
         <main>
             <!-- Задачи -->
-            <section class="flex flex-row space-x-7">
-                <!-- Список задач и их добавление -->
-                <div class="w-7/12">
-                    <!-- Создать новую задачу -->
-                    <form class="flex borderGreenB bg-bgLight h-[56px] mb-7 p-5 items-center">
-                        <label for="newTask">//:</label>
-                        <input type="text" name="newTask" placeholder="  Введите новую задачу...">
-                        <img class="h-full cursor-pointer" src="media/svg/ArrowRight.svg" alt="">
-                    </form>
+            <section class="flex flex-col space-y-7 w-7/12">
+                <!-- Создать новую задачу -->
+                <form id="createTaskForm" autocomplete="off" action="js/formHandler.js" enctype="text/plain" class="flex borderGreenB bg-bgNeutral h-[56px] p-5 items-center">
+                    <label for="newTask">//:</label>
+                    <input type="text" name="newTask" placeholder="  Введите новую задачу...">
+                    <select name="profession" id="profession">
+                        <option default>Професия</option>
+                        <option value="frontend-dev">Frontend Dev</option>
+                        <option value="backend-dev">Backend Dev</option>
+                        <option value="fullstack">Fullstack</option>
+                        <option value="web-design">Web Design</option>
+                    </select>
+                    <button type="submit"><img class="h-full cursor-pointer" src="media/svg/ArrowRight.svg"></button>
+                </form>
 
-                    <!-- Список задач -->
-                    <div class="flex flex-col space-y-5">
-                        <article class="tasks">
-                            <!-- 1 -->
-                            <div class="flex flex-row justify-between">
-                                <div>
-                                    <p>04.24.2023</p>
-                                    <h6>Написать базовую логику авторизации</h6>
-                                </div>
-
-                                <!-- Пометка професии исполнителя -->
-                                <p class="frontend-dev"></p>
+                <!-- Список задач -->
+                <div id="list" class="flex flex-col space-y-5">
+                    <article class="tasks">
+                        <!-- 1 -->
+                        <div class="flex flex-row justify-between">
+                            <div>
+                                <p>04.24.2023</p>
+                                <h6>Написать базовую логику авторизации</h6>
                             </div>
 
-                            <!-- 2 -->
-                            <div class="flex justify-between">
-                                <!-- Состояние -->
-                                <div class="complete"></div>
+                            <!-- Пометка професии исполнителя -->
+                            <div class="frontend-dev"></div>
+                        </div>
 
-                                <p class="executor" data-executor="Алиса Макова">Исполнитель:// </p>
-                            </div>
-                        </article>
+                        <!-- 2 -->
+                        <div class="flex justify-between">
+                            <!-- Состояние -->
+                            <div class="complete"></div>
 
-                        <article class="tasks">
-                            <!-- 1 -->
-                            <div class="flex flex-row justify-between">
-                                <div>
-                                    <p>04.24.2023</p>
-                                    <h6>Изучить основы HTML</h6>
-                                </div>
+                            <p class="executor">Алиса Макова</p>
+                        </div>
+                    </article>
 
-                                <!-- Пометка професии исполнителя -->
-                                <p class="frontend-dev"></p>
-                            </div>
-
-                            <!-- 2 -->
-                            <div class="flex justify-between">
-                                <!-- Состояние -->
-                                <div class="inProgress"></div>
-
-                                <p class="executor" data-executor="Иванов Иван">Исполнитель:// </p>
-                            </div>
-                        </article>
-
-                        <article class="tasks">
-                            <!-- 1 -->
-                            <div class="flex flex-row justify-between">
-                                <div>
-                                    <p>04.24.2023</p>
-                                    <h6>Решить задачи на LeetCode (4 б)</h6>
-                                </div>
-
-                                <!-- Пометка професии исполнителя -->
-                                <p class=""></p>
+                    <article class="tasks">
+                        <!-- 1 -->
+                        <div class="flex flex-row justify-between">
+                            <div>
+                                <p>04.24.2023</p>
+                                <h6>Изучить основы HTML</h6>
                             </div>
 
-                            <!-- 2 -->
-                            <div class="flex justify-between">
-                                <!-- Состояние -->
-                                <div class="take"></div>
+                            <!-- Пометка професии исполнителя -->
+                            <div class="frontend-dev"></div>
+                        </div>
 
-                                <p class="executor" data-executor="NaN">Исполнитель:// </p>
+                        <!-- 2 -->
+                        <div class="flex justify-between">
+                            <!-- Состояние -->
+                            <div class="inProgress"></div>
+
+                            <p class="executor">Иванов Иван</p>
+                        </div>
+                    </article>
+
+                    <article class="tasks">
+                        <!-- 1 -->
+                        <div class="flex flex-row justify-between">
+                            <div>
+                                <p>04.24.2023</p>
+                                <h6>Решить задачи на LeetCode (4 б)</h6>
                             </div>
-                        </article>
-                    </div>
-                </div>
 
-                <!-- Участники -->
-                <div class="w-5/12 bg-bgDark">
+                            <!-- Пометка професии исполнителя -->
+                            <div class="frontend-dev"></div>
+                        </div>
 
+                        <!-- 2 -->
+                        <div class="flex justify-between">
+                            <!-- Состояние -->
+                            <div status class="take"></div>
+
+                            <p executor class=""></p>
+                        </div>
+                    </article>
                 </div>
             </section>
 
             <!-- участники -->
-            <section>
+            <section class="w-5/12 h-fit pl-4 py-8 pr-[13%] bg-bgDark space-y-4 rounded-xl">
+                <div class="flex justify-between">
+                    <p>Учаcтники</p>
+                    <p class="text-xs bg-[#797979] text-[#D7D7D7] px-3 py-1">Показать всех</p>
+                </div>
 
+                <!-- Карточки участников -->
+                <div class="space-y-5">
+                    <article class="partner bg-bgLight">
+                        <div>
+                            <p>Иван Иванов</p>
+                            <div class="frontend-dev"></div>
+                        </div>
+
+                        <div class="flex justify-between w-4/6">
+                            <p>Задачи: 2</p>
+                            <p class="text-textRed">Выполенно: 0</p>
+                        </div>
+                    </article>
+
+                    <article class="partner-onclick">
+                        <div>
+                            <p>Алиса Макова</p>
+                            <div class="web-design"></div>
+                        </div>
+
+                        <div class="flex justify-between w-4/6">
+                            <p>Задачи: 4</p>
+                            <p class="text-[#487400]">Выполенно: 3</p>
+                        </div>
+                    </article>
+
+                    <article class="partner bg-bgLight">
+                        <div>
+                            <p>Максим Иванов</p>
+                            <div class="frontend-dev"></div>
+                        </div>
+
+                        <div class="flex justify-between w-4/6">
+                            <p>Задачи: 4</p>
+                            <p class="text-textRed">Выполенно: 0</p>
+                        </div>
+                    </article>
+
+                    <article class="partner bg-bgLight">
+                        <div>
+                            <p>Иван Матраскин</p>
+                            <div class="frontend-dev"></div>
+                        </div>
+
+                        <div class="flex justify-between w-4/6">
+                            <p>Задачи: 2</p>
+                            <p class="text-textGreen">Выполенно: 1</p>
+                        </div>
+                    </article>
+                </div>
             </section>
+
         </main>
     </div>
 </body>
-
+<script src="js/index.js"></script>
 </html>
