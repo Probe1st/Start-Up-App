@@ -45,13 +45,14 @@ function renderTask(content) {
     <!-- 2 -->
     <div class="flex justify-between">
         <!-- Состояние -->
-        <div class="${content["statusTask"]}"></div>
+        <div status class="${content["statusTask"]}"></div>
 
-        <p class="">${content["executor"]}</p>
+        <p executor class="">${content["executor"]}</p>
     </div> 
     `;
     elem.innerHTML = templateDiv;
     document.getElementById("list").append(elem);
+    addListenerOnTake();
 }
 
 document.getElementById('createTaskForm').addEventListener('submit', function createNewTask(event) {
@@ -75,21 +76,47 @@ document.querySelector("#createTaskForm").querySelector('textarea').addEventList
 
 
 // взятие задания
-let takeTaskArr = document.querySelectorAll(".take")
-for (let elem of takeTaskArr){
-    elem.addEventListener('click', takeTask);
-}
-
+function addListenerOnTake() {
+    let takeTaskArr = document.querySelectorAll(".take")
+    for (let elem of takeTaskArr) {
+        elem.addEventListener('click', takeTask);
+    }
+};
+addListenerOnTake();
 
 function takeTask(event) {
-    let elem = event.target; //получение элемента
+    let elem = event.target.closest(".tasks"); //получение элемента
 
-    let status = elem.querySelector(".take");
+    let status = elem.querySelector("[status]");
     let executor = elem.querySelector('[executor]');
-    
-    status.className("inProgress");
-    executor.className("executor");
+
+    status.className = "inProgress";
+    executor.className = "executor";
 
     executor.innerHTML = "Current user";
-}
+
+    event.target.removeEventListener('click', takeTask)
+    addListenerOnInProgress()
+};
+// ------------------------------ \\
+
+
+// Завершение задания
+function addListenerOnInProgress() {
+    let takeInProgressArr = document.querySelectorAll(".inProgress")
+    for (let elem of takeInProgressArr) {
+        elem.addEventListener('click', completeTask);
+    }
+};
+addListenerOnInProgress();
+
+function completeTask(event) {
+    let elem = event.target.closest(".tasks"); //получение элемента
+
+    let status = elem.querySelector("[status]");
+
+    status.className = "complete";
+
+    event.target.removeEventListener('click', completeTask)
+};
 // ------------------------------ \\

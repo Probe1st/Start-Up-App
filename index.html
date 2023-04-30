@@ -88,7 +88,7 @@
 
                 /* Кнопки состояния */
             .status {
-                @apply h-max w-max px-5;
+                @apply h-max w-max px-5 cursor-pointer;
             }
             .complete {
                 @apply before:mr-2 before:status before:py-1 before:bg-[#B0FD33] before:h-max 
@@ -256,9 +256,9 @@
                         <!-- 2 -->
                         <div class="flex justify-between">
                             <!-- Состояние -->
-                            <div class="complete"></div>
+                            <div status class="complete"></div>
 
-                            <p class="executor">Алиса Макова</p>
+                            <p executor class="executor">Алиса Макова</p>
                         </div>
                     </article>
 
@@ -277,7 +277,7 @@
                         <!-- 2 -->
                         <div class="flex justify-between">
                             <!-- Состояние -->
-                            <div class="inProgress"></div>
+                            <div status class="inProgress"></div>
 
                             <p executor class="executor">Иванов Иван</p>
                         </div>
