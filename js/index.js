@@ -1,8 +1,9 @@
+// создание новых заданий
 function serialize(formNode) {
     return formNode.elements;
 }
 
-function currentDate(){
+function currentDate() {
     let date = new Date();
 
     let format = "";
@@ -22,10 +23,10 @@ function contentTask(task, profession, statusTask, executor) {
     }
 }
 
-function renderTask(content){
+function renderTask(content) {
     elem = document.createElement('article');
     elem.classList.add('tasks');
-    if (content.executor != ""){
+    if (content.executor != "") {
         let p = document.querySelector('p[executor]');
         p.classList.add("executor");
     }
@@ -53,13 +54,42 @@ function renderTask(content){
     document.getElementById("list").append(elem);
 }
 
-function createNewTask(event) {
+document.getElementById('createTaskForm').addEventListener('submit', function createNewTask(event) {
     event.preventDefault();
     const formElements = serialize(document.getElementById('createTaskForm'));
 
-    const newContentTask = new contentTask(formElements["newTask"].value, "frontend-dev", "take", "");
-    renderTask(newContentTask)
+    const newContentTask = new contentTask(formElements["newTask"].value, formElements['profession'].value, "take", "");
+    renderTask(newContentTask);
+});
+// ------------------------------ \\
+
+
+// динамическое изменение высоты textarea
+document.querySelector("#createTaskForm").querySelector('textarea').addEventListener("input", function () {
+    let elem = document.querySelector("[name='newTask']");
+
+    elem.style.height = "1.5em";
+    elem.style.height = elem.scrollHeight + 'px';
+});
+// ------------------------------ \\
+
+
+// взятие задания
+let takeTaskArr = document.querySelectorAll(".take")
+for (let elem of takeTaskArr){
+    elem.addEventListener('click', takeTask);
 }
 
-// Обработчики
-document.getElementById('createTaskForm').addEventListener('submit', createNewTask)
+
+function takeTask(event) {
+    let elem = event.target; //получение элемента
+
+    let status = elem.querySelector(".take");
+    let executor = elem.querySelector('[executor]');
+    
+    status.className("inProgress");
+    executor.className("executor");
+
+    executor.innerHTML = "Current user";
+}
+// ------------------------------ \\

@@ -4,3 +4,8 @@
   font-style: normal;
   font-weight: normal;
 }
+
+[name="newTask"]::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

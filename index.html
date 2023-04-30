@@ -41,7 +41,7 @@
                 @apply bg-bgBody;
             }
             main {
-                @apply flex space-x-7;
+                @apply flex space-x-7 pb-10;
             }
             .container {
                 @apply w-9/12 mx-auto;
@@ -78,6 +78,12 @@
             }
             .web-design {
                 @apply profession bg-[#64E096] after:content-['web-design'] after:text-[#004A1E] ;
+            }
+            .backend-dev {
+                @apply profession bg-[#494949] after:content-['backend-dev'] after:text-[#ADADAD];
+            }
+            .fullstack {
+                @apply profession bg-gradient-to-br from-[#F56E8D] to-[#EA0037] after:content-['fullstack'] after:text-[white];
             }
 
                 /* Кнопки состояния */
@@ -158,6 +164,16 @@
 
              /* ---------------- */
 
+            /* Форма для создания новых задач */
+            [name="profession"] { /* select */
+                @apply bg-[#E7FFBF] text-center rounded-xl outline-none
+                ;
+            }
+            [name="newTask"] {
+                @apply w-full bg-inherit h-[1.5em] text-white 
+                placeholder:align-top outline-none resize-none
+            }
+            /* ---------------- */
         }
     </style>
     <title>Home</title>
@@ -210,18 +226,18 @@
             <!-- Задачи -->
             <section class="flex flex-col space-y-7 w-7/12">
                 <!-- Создать новую задачу -->
-                <form id="createTaskForm" autocomplete="off" action="js/formHandler.js" enctype="text/plain" class="flex borderGreenB bg-bgNeutral h-[56px] p-5 items-center">
-                    <label for="newTask">//:</label>
-                    <input type="text" name="newTask" placeholder="  Введите новую задачу...">
-                    <select name="profession" id="profession">
-                        <option default>Професия</option>
+                <form class="flex space-x-3 borderGreenB bg-bgNeutral min-h-[56px] p-5 items-center" id="createTaskForm" autocomplete="off" action="js/formHandler.js" enctype="text/plain">
+                    <label class="self-start" for="newTask">//:</label>
+                    <textarea type="text" placeholder="Введите новую задачу..." required name="newTask"></textarea>
+                    <select name="profession" required id="profession">
+                        <option value="" selected disabled>Профессия</option>
                         <option value="frontend-dev">Frontend Dev</option>
                         <option value="backend-dev">Backend Dev</option>
                         <option value="fullstack">Fullstack</option>
                         <option value="web-design">Web Design</option>
                     </select>
-                    <button type="submit"><img class="h-full cursor-pointer" src="media/svg/ArrowRight.svg"></button>
-                </form>
+                    <button class="" type="submit"><img class="min-h-[15px] cursor-pointer" src="media/svg/ArrowRight.svg"></button>
+                </form> 
 
                 <!-- Список задач -->
                 <div id="list" class="flex flex-col space-y-5">
@@ -263,7 +279,7 @@
                             <!-- Состояние -->
                             <div class="inProgress"></div>
 
-                            <p class="executor">Иванов Иван</p>
+                            <p executor class="executor">Иванов Иван</p>
                         </div>
                     </article>
 
@@ -350,7 +366,9 @@
             </section>
 
         </main>
+
     </div>
 </body>
 <script src="js/index.js"></script>
 </html>
+
