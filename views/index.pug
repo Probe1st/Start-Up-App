@@ -1,0 +1,133 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    style 
+      include ../public/stylesheets/style.css
+    title Home
+  body
+    .container
+      header
+        // 1-ая строчка
+        div
+          p
+            span.text-textGreen StrartUp Club
+            br
+            | Statistics
+        // 2-ая строка
+        .flex.justify-between
+          .statisticsWeek
+            div
+              p 1 неделя
+            div
+              p начало
+              p 24.04.2023
+            div
+              p конец
+              p 31.04.2023
+            div
+              p выполнено
+              p.text-textGreen 5 задач
+            div
+              p осталось
+              p 10 задач
+          div
+            p Вы участник
+      main#index.space-x-7
+        // Задачи
+        section.flex.flex-col.space-y-7(class='w-7/12')
+          // Создать новую задачу
+          form#createTaskForm.flex.space-x-3.borderGreenB.bg-bgNeutral.p-5.items-center(class='min-h-[56px]' autocomplete='off' action='../public/javascript/index.js' enctype='text/plain')
+            label.self-start(for='newTask') //:
+            textarea(type='text' placeholder='Введите новую задачу...' required='' name='newTask')
+            select#profession(name='profession' required='')
+              option(value='' selected='' disabled='') Профессия
+              option(value='frontend-dev') Frontend Dev
+              option(value='backend-dev') Backend Dev
+              option(value='fullstack') Fullstack
+              option(value='web-design') Web Design
+            button(type='submit')
+              div.cursor-pointer(class='h-[15px] w-[20px]')
+                include ../public/media/svg/ArrowRight.svg
+          // Список задач
+          #list.flex.flex-col.space-y-5
+            article.tasks
+              // 1
+              .flex.flex-row.justify-between
+                div
+                  p 04.24.2023
+                  h6 Написать базовую логику авторизации
+                // Пометка професии исполнителя
+                .frontend-dev
+              // 2
+              .flex.justify-between
+                // Состояние
+                .complete(status='')
+                p.executor(executor='') Алиса Макова
+            article.tasks
+              // 1
+              .flex.flex-row.justify-between
+                div
+                  p 04.24.2023
+                  h6 Изучить основы HTML
+                // Пометка професии исполнителя
+                .frontend-dev
+              // 2
+              .flex.justify-between
+                // Состояние
+                .inProgress(status='')
+                p.executor(executor='') Иванов Иван
+            article.tasks
+              // 1
+              .flex.flex-row.justify-between
+                div
+                  p 04.24.2023
+                  h6 Решить задачи на LeetCode (4 б)
+                // Пометка професии исполнителя
+                .frontend-dev
+              // 2
+              .flex.justify-between
+                // Состояние
+                .take(status='')
+                p(executor='')
+        // участники
+        section.h-fit.pl-4.py-8.bg-bgDark.space-y-4.rounded-xl(class='w-5/12 pr-[13%]')
+          .flex.justify-between
+            p Учаcтники
+            a.text-xs.cursor-pointer.px-3.py-1(pageswitcher='users' class='bg-[#797979] text-[#D7D7D7]') Показать всех
+          // Карточки участников
+          .space-y-5
+            article.partner.bg-bgLight
+              div
+                p Иван Иванов
+                .frontend-dev
+              .flex.justify-between(class='w-4/6')
+                p Задачи: 2
+                p.text-textRed Выполенно: 0
+            article.partner-onclick
+              div
+                p Алиса Макова
+                .web-design
+              .flex.justify-between(class='w-4/6')
+                p Задачи: 4
+                p(class='text-[#487400]') Выполенно: 3
+            article.partner.bg-bgLight
+              div
+                p Максим Иванов
+                .frontend-dev
+              .flex.justify-between(class='w-4/6')
+                p Задачи: 4
+                p.text-textRed Выполенно: 0
+            article.partner.bg-bgLight
+              div
+                p Иван Матраскин
+                .frontend-dev
+              .flex.justify-between(class='w-4/6')
+                p Задачи: 2
+                p.text-textGreen Выполенно: 1
+      main#users(hidden='')
+        p users
+    block scripts
+      script (src='../public/javascript/index.js')
