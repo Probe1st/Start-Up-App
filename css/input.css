@@ -11,7 +11,7 @@
 @layer utilities {
   /* Стилизация тегов */
   html {
-    @apply font-[PerfectDosvga];
+    @apply font-['PerfectDosvga'];
   }
   body {
     @apply bg-bgBody;

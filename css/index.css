@@ -688,7 +688,7 @@ video {
 /* Стилизация тегов */
 
 html {
-  font-family: PerfectDosvga;
+  font-family: 'PerfectDosvga';
 }
 
 body {
@@ -712,12 +712,20 @@ p {
   line-height: 1.5rem;
 }
 
-h1~p, h2~p, h3~p {
+h1 ~ p,
+  h2 ~ p,
+  h3 ~ p {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1180,4 +1188,11 @@ label {
   .container {
     max-width: 1536px;
   }
+}
+
+@font-face {
+  font-family: PerfectDosvga;
+
+  src: url("../fonts/perfectdosvga437.ttf"),
+        local("../fonts/perfectdosvga437.ttf");
 }
