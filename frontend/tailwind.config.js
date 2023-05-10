@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ["index.html"],
   theme: {
     colors: {
       bgBody: '#414141',

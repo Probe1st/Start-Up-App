@@ -1,8 +1,9 @@
-// создание новых заданий
+// получение дочерних элементов
 function serialize(formNode) {
     return formNode.elements;
 }
 
+// возращение текущей даты 
 function currentDate() {
     let date = new Date();
 
@@ -13,6 +14,7 @@ function currentDate() {
     return String(`${date.getDate()}.${format}${date.getMonth() + 1}.${date.getFullYear()}`)
 }
 
+// объект для имитации получения объекта с сервера
 function contentTask(task, profession, statusTask, executor) {
     return {
         date: currentDate(),
@@ -23,50 +25,72 @@ function contentTask(task, profession, statusTask, executor) {
     }
 }
 
-function renderTask(content) {
+// шаблон верстки для карточек
+function templateCardOfTask(object) {
+    return {
+        layout: `
+        <!-- 1 -->
+        <div class="flex flex-row justify-between">
+            <div>
+                <p>${object['date']}</p>
+                <h6>${object['task']}</h6>
+            </div>
+        
+            <!-- Пометка професии исполнителя -->
+            <p class="${object["profession"]}"></p>
+        </div>
+        
+        <!-- 2 -->
+        <div class="flex justify-between">
+            <!-- Состояние -->
+            <div status class="${object["statusTask"]}"></div>
+        
+            <p executor class="">${object["executor"]}</p>
+        </div> 
+        `
+    }
+};
+
+// создание блока новой задачи 
+function createNewTask(content) {
     elem = document.createElement('article');
+
     elem.classList.add('tasks');
+
     if (content.executor != "") {
         let p = document.querySelector('p[executor]');
         p.classList.add("executor");
-    }
-    const templateDiv = `
-    <!-- 1 -->
-    <div class="flex flex-row justify-between">
-        <div>
-            <p>${content['date']}</p>
-            <h6>${content['task']}</h6>
-        </div>
+    };
 
-        <!-- Пометка професии исполнителя -->
-        <p class="${content["profession"]}"></p>
-    </div>
-
-    <!-- 2 -->
-    <div class="flex justify-between">
-        <!-- Состояние -->
-        <div status class="${content["statusTask"]}"></div>
-
-        <p executor class="">${content["executor"]}</p>
-    </div> 
-    `;
-    elem.innerHTML = templateDiv;
-    document.getElementById("list").append(elem);
-    addListenerOnTake();
+    elem.innerHTML = templateCardOfTask(content).layout.valueOf();
+    return elem;
 }
 
-document.getElementById('createTaskForm').addEventListener('submit', function createNewTask(event) {
+// выводит elem внутри place
+function render(place, elem) {
+
+    place.append(elem);
+
+    addHandlerOnTake();
+}
+
+// добавление новой задачи
+document.getElementById('createTaskForm').addEventListener('submit', event => {
+    
     event.preventDefault();
     const formElements = serialize(document.getElementById('createTaskForm'));
 
-    const newContentTask = new contentTask(formElements["newTask"].value, formElements['profession'].value, "take", "");
-    renderTask(newContentTask);
+    const content = new contentTask(formElements["newTask"].value, formElements['profession'].value, "take", "");
+    let place = document.getElementById("list");
+    let newElem = createNewTask(content);
+
+    render(place, newElem);
 });
 // ------------------------------ \\
 
 
 // динамическое изменение высоты textarea
-document.querySelector("#createTaskForm").querySelector('textarea').addEventListener("input", function () {
+document.querySelector("#createTaskForm").querySelector('textarea').addEventListener("input", () => {
     let elem = document.querySelector("[name='newTask']");
 
     elem.style.height = "1.5em";
@@ -76,7 +100,7 @@ document.querySelector("#createTaskForm").querySelector('textarea').addEventList
 
 
 // взятие задания
-function addListenerOnTake() {
+function addHandlerOnTake() {
     let takeTaskArr = document.querySelectorAll(".take")
     for (let elem of takeTaskArr) {
         elem.addEventListener('click', takeTask);
@@ -124,7 +148,7 @@ function completeTask(event) {
 // Переключение страниц
 let activeId = "index";
 
-document.querySelector("[pageSwitcher]").addEventListener('click', function(event){
+document.querySelector("[pageSwitcher]").addEventListener('click', function (event) {
     let elem = this;
     let passiveId = elem.getAttribute("pageSwitcher");
 
