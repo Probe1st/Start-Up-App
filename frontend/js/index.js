@@ -24,7 +24,7 @@ function contentTask(task, profession, statusTask, executor) {
 }
 
 function renderTask(content) {
-    elem = document.createElement('article');
+    let elem = document.createElement('article');
     elem.classList.add('tasks');
     if (content.executor != "") {
         let p = document.querySelector('p[executor]');
@@ -81,7 +81,7 @@ function addListenerOnTake() {
     for (let elem of takeTaskArr) {
         elem.addEventListener('click', takeTask);
     }
-};
+}
 addListenerOnTake();
 
 function takeTask(event) {
@@ -97,7 +97,7 @@ function takeTask(event) {
 
     event.target.removeEventListener('click', takeTask)
     addListenerOnInProgress()
-};
+}
 // ------------------------------ \\
 
 
@@ -107,7 +107,7 @@ function addListenerOnInProgress() {
     for (let elem of takeInProgressArr) {
         elem.addEventListener('click', completeTask);
     }
-};
+}
 addListenerOnInProgress();
 
 function completeTask(event) {
@@ -118,13 +118,13 @@ function completeTask(event) {
     status.className = "complete";
 
     event.target.removeEventListener('click', completeTask)
-};
+}
 // ------------------------------ \\
 
 // Переключение страниц
 let activeId = "index";
 
-document.querySelector("[pageSwitcher]").addEventListener('click', function(event){
+document.querySelector("[pageSwitcher]").addEventListener('click', function(){
     let elem = this;
     let passiveId = elem.getAttribute("pageSwitcher");
 
