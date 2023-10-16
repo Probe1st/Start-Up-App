@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -39,14 +39,13 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
-  -moz-tab-size: 4;
   /* 3 */
-  -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
-  font-feature-settings: normal;
+  -webkit-font-feature-settings: normal;
+          font-feature-settings: normal;
   /* 5 */
   font-variation-settings: normal;
   /* 6 */
@@ -190,6 +189,11 @@ optgroup,
 select,
 textarea {
   font-family: inherit;
+  /* 1 */
+  -webkit-font-feature-settings: inherit;
+          font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -342,6 +346,14 @@ menu {
 }
 
 /*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
 Prevent resizing textareas horizontally by default.
 */
 
@@ -354,7 +366,7 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -472,6 +484,56 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
 ::backdrop {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -526,29 +588,12 @@ video {
   display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .min-h-\[15px\] {
   min-height: 15px;
 }
 
 .min-h-\[56px\] {
   min-height: 56px;
-}
-
-.w-4\/6 {
-  width: 66.666667%;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
 }
 
 .w-7\/12 {
@@ -581,18 +626,6 @@ video {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-7 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
 .space-y-5 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -609,25 +642,6 @@ video {
   align-self: flex-start;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.bg-\[\#797979\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(121 121 121 / var(--tw-bg-opacity));
-}
-
-.bg-bgDark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(33 33 33 / var(--tw-bg-opacity));
-}
-
-.bg-bgLight {
-  --tw-bg-opacity: 1;
-  background-color: rgb(63 63 63 / var(--tw-bg-opacity));
-}
-
 .bg-bgNeutral {
   --tw-bg-opacity: 1;
   background-color: rgb(41 41 41 / var(--tw-bg-opacity));
@@ -637,52 +651,9 @@ video {
   padding: 1.25rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.pl-4 {
-  padding-left: 1rem;
-}
-
-.pr-\[13\%\] {
-  padding-right: 13%;
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.text-\[\#487400\] {
-  --tw-text-opacity: 1;
-  color: rgb(72 116 0 / var(--tw-text-opacity));
-}
-
-.text-\[\#D7D7D7\] {
-  --tw-text-opacity: 1;
-  color: rgb(215 215 215 / var(--tw-text-opacity));
-}
-
 .text-textGreen {
   --tw-text-opacity: 1;
   color: rgb(157 254 0 / var(--tw-text-opacity));
-}
-
-.text-textRed {
-  --tw-text-opacity: 1;
-  color: rgb(255 51 51 / var(--tw-text-opacity));
 }
 
 /* Стилизация тегов */
@@ -777,9 +748,9 @@ h6 {
 /* Иконки профессии */
 
 .profession {
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   border-radius: 0.375rem;
   padding-left: 0.375rem;
@@ -791,9 +762,9 @@ h6 {
 .frontend-dev {
   --tw-bg-opacity: 1;
   background-color: rgb(255 186 104 / var(--tw-bg-opacity));
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   border-radius: 0.375rem;
   padding-left: 0.375rem;
@@ -812,9 +783,9 @@ h6 {
 .web-design {
   --tw-bg-opacity: 1;
   background-color: rgb(100 224 150 / var(--tw-bg-opacity));
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   border-radius: 0.375rem;
   padding-left: 0.375rem;
@@ -833,9 +804,9 @@ h6 {
 .backend-dev {
   --tw-bg-opacity: 1;
   background-color: rgb(73 73 73 / var(--tw-bg-opacity));
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   border-radius: 0.375rem;
   padding-left: 0.375rem;
@@ -857,9 +828,9 @@ h6 {
   --tw-gradient-to: rgb(245 110 141 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   --tw-gradient-to: #EA0037 var(--tw-gradient-to-position);
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   border-radius: 0.375rem;
   padding-left: 0.375rem;
@@ -878,9 +849,9 @@ h6 {
 /* Кнопки состояния */
 
 .status {
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   cursor: pointer;
   padding-left: 1.25rem;
@@ -895,9 +866,9 @@ h6 {
   padding-bottom: 0.25rem;
   --tw-content: 'Сделанно';
   content: var(--tw-content);
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   cursor: pointer;
   padding-left: 1.25rem;
@@ -914,9 +885,9 @@ h6 {
 .inProgress {
   --tw-bg-opacity: 1;
   background-color: rgb(151 199 255 / var(--tw-bg-opacity));
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   cursor: pointer;
   padding-left: 1.25rem;
@@ -931,9 +902,9 @@ h6 {
 .take {
   --tw-bg-opacity: 1;
   background-color: rgb(231 255 191 / var(--tw-bg-opacity));
-  height: -moz-max-content;
+  height: -webkit-max-content;
   height: max-content;
-  width: -moz-max-content;
+  width: -webkit-max-content;
   width: max-content;
   cursor: pointer;
   padding-left: 1.25rem;
@@ -953,47 +924,6 @@ h6 {
 }
 
 /* Карточки участников */
-
-.partner {
-  justify-content: space-between;
-}
-
-.partner > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
-.partner {
-  border-radius: 0.5rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(63 63 63 / var(--tw-bg-opacity));
-  padding: 0.625rem;
-}
-
-.partner-onclick {
-  justify-content: space-between;
-}
-
-.partner-onclick > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
-.partner-onclick {
-  border-radius: 0.5rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(231 255 191 / var(--tw-bg-opacity));
-  padding: 0.625rem;
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.partner-onclick > div > p:first-child {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
 
 /* ---------------- */
 
@@ -1034,7 +964,7 @@ input {
   outline-offset: 2px;
 }
 
-input::-moz-placeholder {
+input::-webkit-input-placeholder {
   --tw-text-opacity: 1;
   color: rgb(177 177 177 / var(--tw-text-opacity));
 }
@@ -1125,7 +1055,7 @@ label {
 
 /* Форма для создания новых задач */
 
-[name="profession"] {
+[name='profession'] {
   /* select */
   border-radius: 0.75rem;
   --tw-bg-opacity: 1;
@@ -1135,7 +1065,7 @@ label {
   outline-offset: 2px;
 }
 
-[name="newTask"] {
+[name='newTask'] {
   height: 1.5em;
   width: 100%;
   resize: none;
@@ -1146,11 +1076,11 @@ label {
   outline-offset: 2px;
 }
 
-[name="newTask"]::-moz-placeholder {
+[name='newTask']::-webkit-input-placeholder {
   vertical-align: top;
 }
 
-[name="newTask"]::placeholder {
+[name='newTask']::placeholder {
   vertical-align: top;
 }
 
@@ -1193,6 +1123,6 @@ label {
 @font-face {
   font-family: PerfectDosvga;
 
-  src: url("../fonts/perfectdosvga437.ttf"),
-        local("../fonts/perfectdosvga437.ttf");
+  src: url('./fonts/perfectdosvga437.ttf'),
+    local('./fonts/perfectdosvga437.ttf');
 }
