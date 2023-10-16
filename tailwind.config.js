@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["index.html"],
+  content: ["./src/components/**/*.{js,jsx}", "./src/index.js"],
   theme: {
     colors: {
       bgBody: '#414141',
@@ -17,5 +17,6 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: []
+  plugins: [],
 }
+
