@@ -600,6 +600,10 @@ video {
   width: 58.333333%;
 }
 
+.w-5\/12 {
+  width: 41.666667%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -638,6 +642,18 @@ video {
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-7 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .self-start {
   align-self: flex-start;
 }
@@ -647,13 +663,62 @@ video {
   background-color: rgb(41 41 41 / var(--tw-bg-opacity));
 }
 
+.bg-bgDark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 33 33 / var(--tw-bg-opacity));
+}
+
+.bg-bgLight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 63 63 / var(--tw-bg-opacity));
+}
+
+.bg-bgBody {
+  --tw-bg-opacity: 1;
+  background-color: rgb(65 65 65 / var(--tw-bg-opacity));
+}
+
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-20 {
+  padding: 5rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .text-textGreen {
   --tw-text-opacity: 1;
   color: rgb(157 254 0 / var(--tw-text-opacity));
+}
+
+.text-textGray {
+  --tw-text-opacity: 1;
+  color: rgb(177 177 177 / var(--tw-text-opacity));
 }
 
 /* Стилизация тегов */
@@ -683,9 +748,9 @@ p {
   line-height: 1.5rem;
 }
 
-h1 ~ p,
-  h2 ~ p,
-  h3 ~ p {
+h1~p,
+  h2~p,
+  h3~p {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
@@ -996,20 +1061,20 @@ label {
   margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.statisticsWeek > div {
+.statisticsWeek>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.statisticsWeek > div > p:first-child {
+.statisticsWeek>div>p:first-child {
   font-size: 0.75rem;
   line-height: 1rem;
   --tw-text-opacity: 1;
   color: rgb(177 177 177 / var(--tw-text-opacity));
 }
 
-.statisticsWeek > div:first-child > p {
+.statisticsWeek>div:first-child>p {
   font-size: 1rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
@@ -1039,14 +1104,14 @@ label {
   padding: 1rem;
 }
 
-.tasks > div:first-child p {
+.tasks>div:first-child p {
   font-size: 0.75rem;
   line-height: 1rem;
   --tw-text-opacity: 1;
   color: rgb(177 177 177 / var(--tw-text-opacity));
 }
 
-.tasks > div:first-child h6 {
+.tasks>div:first-child h6 {
   font-size: 1rem;
   line-height: 1.5rem;
 }

@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div>
             <Header />
-            <main id="index">
+            <main className="space-x-7" id="index">
                 <Tasks />
                 <Members />
             </main>

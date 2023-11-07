@@ -9,6 +9,7 @@
 }
 
 @layer utilities {
+
   /* Стилизация тегов */
   html {
     @apply font-['PerfectDosvga'];
@@ -30,9 +31,9 @@
     @apply text-base;
   }
 
-  h1 ~ p,
-  h2 ~ p,
-  h3 ~ p {
+  h1~p,
+  h2~p,
+  h3~p {
     @apply text-3xl;
   }
 
@@ -137,7 +138,7 @@
     @apply bg-[#E7FFBF] rounded-lg p-2.5 justify-between space-y-8 text-[black];
   }
 
-  .partner-onclick > div > p:first-child {
+  .partner-onclick>div>p:first-child {
     @apply text-[black];
   }
 
@@ -168,15 +169,15 @@
     @apply flex flex-row space-x-7;
   }
 
-  .statisticsWeek > div {
+  .statisticsWeek>div {
     @apply flex flex-col justify-center;
   }
 
-  .statisticsWeek > div > p:first-child {
+  .statisticsWeek>div>p:first-child {
     @apply text-textGray text-xs;
   }
 
-  .statisticsWeek > div:first-child > p {
+  .statisticsWeek>div:first-child>p {
     @apply text-base text-[white];
   }
 
@@ -187,11 +188,11 @@
     @apply flex flex-col justify-between bg-bgDark p-4 space-y-14 min-h-[132px];
   }
 
-  .tasks > div:first-child p {
+  .tasks>div:first-child p {
     @apply text-xs text-textGray;
   }
 
-  .tasks > div:first-child h6 {
+  .tasks>div:first-child h6 {
     @apply text-base;
   }
 

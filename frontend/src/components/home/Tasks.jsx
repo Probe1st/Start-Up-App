@@ -1,4 +1,4 @@
-import "./media";
+
 
 export default function Tasks() {
 
@@ -16,7 +16,7 @@ export default function Tasks() {
                     <option value="web-design">Web Design</option>
                 </select>
                 <button className="" type="submit">
-                    <img className="min-h-[15px] cursor-pointer" alt="f" src={"svg/ArrowRight.svg"} />
+                    <img className="min-h-[15px] cursor-pointer" alt=">" src={process.env.PUBLIC_URL + "/media/svg/ArrowRight.svg"} />
                 </button>
             </form>
 
